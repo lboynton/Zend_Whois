@@ -21,7 +21,7 @@ class Lboy_Whois_Result_InternicTest extends PHPUnit_Framework_TestCase
 	{
 		return array
 		(
-			array('amazon.com', '20-feb-2020'),
+			array('amazon.com', '31-oct-2021'),
 			array('apple.com', '20-feb-2020'),
 			array('google.com', '14-sep-2020'),
 			array('twitter.com', '21-jan-2019')
