@@ -12,4 +12,20 @@ class Lboy_Whois_Result_Internic extends Lboy_Whois_Result_AbstractResult
 		$start = strpos($this->whois, "Expiration Date:");
 		return substr($this->whois, $start + 17, 11);
 	}
+	
+	public function getNameServers()
+	{
+		$lines = explode(PHP_EOL, $this->whois);
+		$matching = array();
+		
+		foreach($lines as $line)
+		{
+			if (strpos($line, "Name Server:"))
+			{
+				$matching[] = substr(trim($line), 13);
+			}
+		}
+		
+		return $matching;
+	}
 }
