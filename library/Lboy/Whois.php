@@ -7,6 +7,8 @@
  */
 class Lboy_Whois
 {
+	protected $tlds = array('com', 'co.uk', 'org');
+	
 	public function query($domain)
 	{
 		$server = $this->getWhoisServer($domain);
@@ -17,6 +19,22 @@ class Lboy_Whois
 	protected function getWhoisServer($domain)
 	{
 		return 'whois.internic.net';
+	}
+	
+	public function getTld($domain)
+	{
+		// look for well known TLDs first
+		foreach ($this->tlds as $tld)
+		{
+			if (strpos($domain, $tld))
+			{
+				return $tld;
+			}
+		}
+		
+		// try to guess tld
+		$start = strrpos($domain, '.');
+		return substr($domain, $start + 1);
 	}
 	
 	protected function getResponse($domain, $server)

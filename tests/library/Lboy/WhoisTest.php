@@ -22,4 +22,25 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 		$result = $this->whois->query("test.com");
 		$this->assertInstanceOf('Lboy_Whois_Result_AbstractResult', $result);
 	}
+	
+	/**
+	 * @dataProvider getDomains
+	 * @param string $domain
+	 * @param string $tld
+	 */
+	public function testGetTld($domain, $tld)
+	{
+		$this->assertEquals($tld, $this->whois->getTld($domain));
+	}
+	
+	public function getDomains()
+	{
+		return array
+		(
+			array('google.com', 'com'),
+			array('subdomain.test.com', 'com'),
+			array('test.co.uk', 'co.uk'),
+			array('test.org', 'org')
+		);
+	}
 }
