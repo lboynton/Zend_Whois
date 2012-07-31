@@ -17,9 +17,12 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 		$this->whois = new Lboy_Whois();
 	}
 	
-	public function testQuery()
+	/**
+	 * @dataProvider getDomains
+	 */
+	public function testQuery($domain)
 	{
-		$result = $this->whois->query("test.com");
+		$result = $this->whois->query($domain);
 		$this->assertInstanceOf('Lboy_Whois_Result_AbstractResult', $result);
 	}
 	
@@ -37,10 +40,21 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 	{
 		return array
 		(
-			array('google.com', 'com'),
-			array('subdomain.test.com', 'com'),
-			array('test.co.uk', 'co.uk'),
-			array('test.org', 'org')
+			array('google.com', 'com', 'whois.internic.net'),
+			array('subdomain.test.com', 'com', 'whois.internic.net'),
+			array('test.co.uk', 'co.uk', 'whois.nic.uk'),
+			array('test.org', 'org', 'whois.pir.org')
 		);
+	}
+	
+	/**
+	 * @dataProvider getDomains
+	 * @param string $domain
+	 * @param string $tld
+	 * @param string $whois
+	 */
+	public function testGetWhoisServer($domain, $tld, $whois)
+	{
+		$this->assertEquals($whois, $this->whois->getWhoisServer($domain));
 	}
 }

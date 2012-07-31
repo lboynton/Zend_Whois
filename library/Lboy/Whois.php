@@ -7,24 +7,37 @@
  */
 class Lboy_Whois
 {
-	protected $tlds = array('com', 'co.uk', 'org');
+	protected $tlds = array
+	(
+		'com' => 'whois.internic.net', 
+		'co.uk' => 'whois.nic.uk',
+		'org' => 'whois.pir.org'
+	);
+	
+	protected $parsers = array
+	(
+		'whois.internic.net' => 'Internic',
+		'whois.nic.uk' => 'Nominet',
+		'whois.pir.org' => 'Pir'
+	);
 	
 	public function query($domain)
 	{
 		$server = $this->getWhoisServer($domain);
-		$result = new Lboy_Whois_Result_Internic($this->getResponse($domain, $server));
+		$result = $this->getResult($this->getResponse($domain, $server), 
+			$server);
 		return $result;
 	}
 	
-	protected function getWhoisServer($domain)
+	public function getWhoisServer($domain)
 	{
-		return 'whois.internic.net';
+		return $this->tlds[$this->getTld($domain)];
 	}
 	
 	public function getTld($domain)
 	{
 		// look for well known TLDs first
-		foreach ($this->tlds as $tld)
+		foreach ($this->tlds as $tld => $server)
 		{
 			if (strpos($domain, $tld))
 			{
@@ -35,6 +48,12 @@ class Lboy_Whois
 		// try to guess tld
 		$start = strrpos($domain, '.');
 		return substr($domain, $start + 1);
+	}
+	
+	protected function getResult($response, $server)
+	{
+		$className = 'Lboy_Whois_Result_' . $this->parsers[$server];
+		return new $className($response);
 	}
 	
 	protected function getResponse($domain, $server)
