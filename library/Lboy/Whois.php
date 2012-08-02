@@ -70,20 +70,20 @@ class Lboy_Whois
 	
 	protected function getResponse($domain, $server)
 	{
-		$internic = fsockopen($server, 43);
+		$socket = fsockopen($server, 43);
 		
-		if (is_resource($internic) === true)
+		if (is_resource($socket) === true)
 		{
-			fwrite($internic, "=" . $domain . "\r\n");
-			socket_set_timeout($internic, 5);
+			fwrite($socket, "=" . $domain . "\r\n");
+			socket_set_timeout($socket, 5);
 			$result = '';
 
-			while (feof($internic) !== true)
+			while (feof($socket) !== true)
 			{
-				$result .= fread($internic, 4096);
+				$result .= fread($socket, 4096);
 			}
 
-			fclose($internic);
+			fclose($socket);
 		}
 		else
 		{
