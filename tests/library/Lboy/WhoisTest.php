@@ -18,16 +18,18 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 	}
 	
 	/**
-	 * @dataProvider getDomains
+	 * @dataProvider getValidDomains
 	 */
 	public function testQuery($domain)
 	{
 		$result = $this->whois->query($domain);
 		$this->assertInstanceOf('Lboy_Whois_Result_AbstractResult', $result);
+		$this->assertTrue(is_int(strtotime($result->getExpiry())), 'Could not get expiry time');
+		$this->assertTrue(is_array($result->getNameservers()), 'Could not get nameservers');
 	}
 	
 	/**
-	 * @dataProvider getDomains
+	 * @dataProvider getFakeDomains
 	 * @param string $domain
 	 * @param string $tld
 	 */
@@ -36,7 +38,7 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($tld, $this->whois->getTld($domain));
 	}
 	
-	public function getDomains()
+	public function getFakeDomains()
 	{
 		return array
 		(
@@ -49,8 +51,20 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 		);
 	}
 	
+	public function getValidDomains()
+	{
+		return array
+		(
+			array('google.com'),
+			array('bbc.co.uk'),
+			array('slashdot.org'),
+			array('php.net'),
+			array('info.info')
+		);
+	}
+	
 	/**
-	 * @dataProvider getDomains
+	 * @dataProvider getFakeDomains
 	 * @param string $domain
 	 * @param string $tld
 	 * @param string $whois
