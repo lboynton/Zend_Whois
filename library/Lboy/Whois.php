@@ -11,11 +11,13 @@ class Lboy_Whois
 	(
 		'com' => 'whois.internic.net', 
 		'co.uk' => 'whois.nic.uk',
+		'info' => 'whois.afilias.net',
 		'org' => 'whois.pir.org'
 	);
 	
 	protected $parsers = array
 	(
+		'whois.afilias.net' => 'Info',
 		'whois.internic.net' => 'Internic',
 		'whois.nic.uk' => 'Nominet',
 		'whois.pir.org' => 'Pir'
