@@ -35,8 +35,10 @@ class Lboy_Whois_Result_Nominet extends Lboy_Whois_Result_AbstractResult
 				{
 					break;
 				}
+				
+				$split = explode(' ', $line);
 			
-				$servers[] = $line;
+				$servers[] = $split[0];
 			}
 		}
 		
