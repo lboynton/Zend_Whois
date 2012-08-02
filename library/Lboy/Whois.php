@@ -75,7 +75,7 @@ class Lboy_Whois
 		if (is_resource($internic) === true)
 		{
 			fwrite($internic, "=" . $domain . "\r\n");
-			socket_set_timeout($internic, 30);
+			socket_set_timeout($internic, 5);
 			$result = '';
 
 			while (feof($internic) !== true)
