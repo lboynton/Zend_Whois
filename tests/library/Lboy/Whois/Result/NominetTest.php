@@ -32,7 +32,8 @@ class Lboy_Whois_Result_NominetTest extends PHPUnit_Framework_TestCase
 		return array
 		(
 			array('amazon.co.uk', '05-Dec-2012'),
-			array('bbc.co.uk', '13-Dec-2012')
+			array('bbc.co.uk', '13-Dec-2012'),
+			array('google.co.uk', '14-Feb-2013')
 		);
 	}
 	
@@ -57,6 +58,14 @@ class Lboy_Whois_Result_NominetTest extends PHPUnit_Framework_TestCase
 				(
 					'ns1.rbsov.bbc.co.uk', 'ns1.tcams.bbc.co.uk', 
 					'ns1.thdow.bbc.co.uk'
+				)
+			),
+			array
+			(
+				'google.co.uk', array
+				(
+					'ns1.google.com', 'ns2.google.com', 'ns3.google.com',
+					'ns4.google.com'
 				)
 			)
 		);
