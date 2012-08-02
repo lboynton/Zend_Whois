@@ -24,8 +24,13 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 	{
 		$result = $this->whois->query($domain);
 		$this->assertInstanceOf('Lboy_Whois_Result_AbstractResult', $result);
-		$this->assertTrue(is_int(strtotime($result->getExpiry())), 'Could not get expiry time');
-		$this->assertTrue(is_array($result->getNameservers()), 'Could not get nameservers');
+		
+		$expiry = $result->getExpiry();
+		$nameservers = $result->getNameservers();
+		
+		$this->assertTrue(is_int(strtotime($expiry)), sprintf(
+			'Could not get expiry time (got "%s")', $expiry));
+		$this->assertTrue(is_array($nameservers), 'Could not get nameservers');
 	}
 	
 	/**
