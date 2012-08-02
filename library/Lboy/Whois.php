@@ -74,7 +74,17 @@ class Lboy_Whois
 		
 		if (is_resource($socket) === true)
 		{
-			fwrite($socket, "=" . $domain . "\r\n");
+			// HACK: Internic needs an equals sign to do an exact match.
+			// TODO: Refactor code to remove this hack.
+			if ($server === 'whois.internic.net')
+			{
+				fwrite($socket, "=" . $domain . "\r\n");
+			}
+			else
+			{
+				fwrite($socket, $domain . "\r\n");
+			}
+			
 			socket_set_timeout($socket, 5);
 			$result = '';
 
