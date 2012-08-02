@@ -12,6 +12,7 @@ class Lboy_Whois
 		'com' => 'whois.internic.net', 
 		'co.uk' => 'whois.nic.uk',
 		'info' => 'whois.afilias.net',
+		'net' => 'whois.internic.net', 
 		'org' => 'whois.pir.org'
 	);
 	

@@ -43,7 +43,9 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 			array('google.com', 'com', 'whois.internic.net'),
 			array('subdomain.test.com', 'com', 'whois.internic.net'),
 			array('test.co.uk', 'co.uk', 'whois.nic.uk'),
-			array('test.org', 'org', 'whois.pir.org')
+			array('test.org', 'org', 'whois.pir.org'),
+			array('php.net', 'net', 'whois.internic.net'),
+			array('info.info', 'info', 'whois.afilias.net')
 		);
 	}
 	
