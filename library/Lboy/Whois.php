@@ -33,7 +33,16 @@ class Lboy_Whois
 	
 	public function getWhoisServer($domain)
 	{
-		return $this->tlds[$this->getTld($domain)];
+		$tld = $this->getTld($domain);
+		
+		if (!array_key_exists($tld, $this->tlds))
+		{
+			throw new InvalidArgumentException(sprintf(
+				'Could not get whois server for domain "%s" with unknown tld "%s"', 
+				$domain, $tld));
+		}
+		
+		return $this->tlds[$tld];
 	}
 	
 	public function getTld($domain)

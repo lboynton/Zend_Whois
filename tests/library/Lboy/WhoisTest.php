@@ -57,4 +57,12 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 	{
 		$this->assertEquals($whois, $this->whois->getWhoisServer($domain));
 	}
+	
+	/**
+     * @expectedException InvalidArgumentException
+     */
+	public function testDomainWithUnknownTld()
+	{
+		$this->whois->query('tld.that.is.unknown');
+	}
 }
