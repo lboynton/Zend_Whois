@@ -16,6 +16,7 @@ abstract class Lboy_Whois_Result_AbstractResult
 	
 	public abstract function getExpiry();
 	public abstract function getNameServers();
+	public abstract function isRateLimitExceeded();
 	
 	public function toString()
 	{

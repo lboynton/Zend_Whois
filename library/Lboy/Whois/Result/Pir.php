@@ -33,4 +33,14 @@ class Lboy_Whois_Result_Pir extends Lboy_Whois_Result_AbstractResult
 		
 		return $matching;
 	}
+	
+	public function gotWhois()
+	{
+		return !$this->isLimitedExceeded() && !empty($this->whois);
+	}
+
+	public function isRateLimitExceeded()
+	{
+		return $this->whois == 'WHOIS LIMIT EXCEEDED';
+	}
 }

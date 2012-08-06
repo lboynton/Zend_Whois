@@ -28,4 +28,10 @@ class Lboy_Whois_Result_Internic extends Lboy_Whois_Result_AbstractResult
 		
 		return $matching;
 	}
+
+	public function isRateLimitExceeded()
+	{
+		// TODO
+		return false;
+	}
 }
