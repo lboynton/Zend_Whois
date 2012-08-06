@@ -41,6 +41,6 @@ class Lboy_Whois_Result_Pir extends Lboy_Whois_Result_AbstractResult
 
 	public function isRateLimitExceeded()
 	{
-		return $this->whois == 'WHOIS LIMIT EXCEEDED';
+		return trim($this->whois) == 'WHOIS LIMIT EXCEEDED';
 	}
 }

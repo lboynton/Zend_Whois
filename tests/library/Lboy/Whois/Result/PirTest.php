@@ -70,5 +70,10 @@ class Lboy_Whois_Result_PirTest extends PHPUnit_Framework_TestCase
 		$whois = 'WHOIS LIMIT EXCEEDED';
 		$result = new Lboy_Whois_Result_Pir($whois);
 		$this->assertTrue($result->isRateLimitExceeded());
+		
+		// check it works with spaces
+		$whois = '  WHOIS LIMIT EXCEEDED  ';
+		$result = new Lboy_Whois_Result_Pir($whois);
+		$this->assertTrue($result->isRateLimitExceeded());
 	}
 }
