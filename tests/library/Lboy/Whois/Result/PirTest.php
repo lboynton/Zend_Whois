@@ -64,6 +64,9 @@ class Lboy_Whois_Result_PirTest extends PHPUnit_Framework_TestCase
 	
 	public function testIsRateLimitExceeded()
 	{
+		$result = new Lboy_Whois_Result_Pir('not rate limited');
+		$this->assertFalse($result->isRateLimitExceeded());
+		
 		$whois = 'WHOIS LIMIT EXCEEDED';
 		$result = new Lboy_Whois_Result_Pir($whois);
 		$this->assertTrue($result->isRateLimitExceeded());
