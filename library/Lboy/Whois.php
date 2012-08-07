@@ -52,6 +52,7 @@ class Lboy_Whois
 		// look for well known TLDs first
 		foreach ($this->tlds as $tld => $server)
 		{
+			// see if the domain ends with any known tlds
 			if (substr_compare($domain, $tld, -strlen($tld), strlen($tld)) === 0)
 			{
 				return $tld;
