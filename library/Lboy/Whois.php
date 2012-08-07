@@ -13,7 +13,8 @@ class Lboy_Whois
 		'co.uk' => 'whois.nic.uk',
 		'info' => 'whois.afilias.net',
 		'net' => 'whois.internic.net', 
-		'org' => 'whois.pir.org'
+		'org' => 'whois.pir.org',
+		'org.uk' => 'whois.nic.uk'
 	);
 	
 	protected $parsers = array
@@ -51,7 +52,7 @@ class Lboy_Whois
 		// look for well known TLDs first
 		foreach ($this->tlds as $tld => $server)
 		{
-			if (strpos($domain, $tld))
+			if (substr_compare($domain, $tld, -strlen($tld), strlen($tld)) === 0)
 			{
 				return $tld;
 			}
