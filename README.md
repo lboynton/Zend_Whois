@@ -3,11 +3,13 @@ Zend_Whois
 
 Zend Framework-style whois component. Domains with the following TLDs can be queried:
 
+* .biz
 * .com
 * .co.uk
 * .info
 * .net
 * .org
+* .org.uk
 
 Usage
 ----------
