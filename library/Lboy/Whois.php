@@ -9,6 +9,7 @@ class Lboy_Whois
 {
 	protected $tlds = array
 	(
+		'biz' => 'whois.neulevel.biz',
 		'com' => 'whois.internic.net', 
 		'co.uk' => 'whois.nic.uk',
 		'info' => 'whois.afilias.net',
@@ -22,6 +23,7 @@ class Lboy_Whois
 		'whois.afilias.net' => 'Info',
 		'whois.internic.net' => 'Internic',
 		'whois.nic.uk' => 'Nominet',
+		'whois.neulevel.biz' => 'Neustar',
 		'whois.pir.org' => 'Pir'
 	);
 	

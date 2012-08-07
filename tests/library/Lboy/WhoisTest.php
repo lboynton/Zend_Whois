@@ -65,7 +65,8 @@ class Lboy_WhoisTest extends PHPUnit_Framework_TestCase
 			array('bbc.co.uk'),
 			array('slashdot.org'),
 			array('php.net'),
-			array('info.info')
+			array('info.info'),
+			array('neustar.biz')
 		);
 	}
 	
