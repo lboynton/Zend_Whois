@@ -99,7 +99,7 @@ class Lboy_Whois
 		}
 		else
 		{
-			throw new Exception("Could not connect to whois server");
+			throw new RuntimeException("Could not connect to whois server");
 		}
 		
 		return $result;
