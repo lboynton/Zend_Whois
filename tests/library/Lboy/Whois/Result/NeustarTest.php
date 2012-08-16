@@ -21,7 +21,7 @@ class Lboy_Whois_Result_NeustarTest extends PHPUnit_Framework_TestCase
 	{
 		return array
 		(
-			array('neustar.biz', 'Tue Nov 06')
+			array('neustar.biz', 'Tue Nov 06 23:59:00 GMT 2012')
 		);
 	}
 	

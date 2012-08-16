@@ -10,7 +10,7 @@ class Lboy_Whois_Result_Neustar extends Lboy_Whois_Result_AbstractResult
 	public function getExpiry()
 	{
 		$start = strpos($this->whois, "Domain Expiration Date:");
-		return substr($this->whois, $start + 45, 10);
+		return substr($this->whois, $start + 45, 28);
 	}
 
 	public function getNameServers()
